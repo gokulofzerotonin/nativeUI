@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Zerotonin – Live View</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="standalone-mode">
+
+    <header class="demo-header">
+        <div style="display: flex; align-items: center; gap: 12px;" onclick="window.location.href='index.html'"
+            style="cursor: pointer;">
+            <img src="assets/logo-symbol-white.svg" height="28" id="demo-logo" />
+            <span class="desktop-only" style="font-size: 14px; font-weight: 600;">Zerotonin Mobile View</span>
+            <span class="mobile-only" style="font-size: 14px; font-weight: 600;">Zerotonin</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="view-switcher desktop-only">
+                <a href="index.html"
+                    style="color: var(--text-muted); font-size: 11px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Dual
+                    Preview</a>
+            </div>
+
+            <div class="theme-selector">
+                <select id="theme-select" onchange="window.setTheme(this.value)"
+                    style="background: var(--card); color: var(--text-primary); border: 1px solid var(--border); padding: 4px 8px; border-radius: 6px; font-size: 12px; cursor: pointer;">
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                    <option value="cyber">Cyber</option>
+                    <option value="exuberant">Exuberant</option>
+                    <option value="exuberant-light">Ex-Light</option>
+                    <option value="zera">Zera</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <div id="app-view" class="main-container"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zerotonin – Dual UI Preview</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="demo-header">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <img src="assets/logo-symbol-white.svg" height="28" id="demo-logo" />
+      <span id="demo-title">Doctor App – Responsive Prototype</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div class="view-switcher desktop-only">
+        <a href="app.html"
+          style="color: var(--text-muted); font-size: 11px; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Live
+          App View</a>
+      </div>
+
+      <div class="theme-selector">
+        <label for="theme-select"
+          style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-right: 8px;">Theme:</label>
+        <select id="theme-select" onchange="window.setTheme(this.value)"
+          style="background: var(--card); color: var(--text-primary); border: 1px solid var(--border); padding: 4px 8px; border-radius: 6px; font-size: 12px; cursor: pointer;">
+          <option value="dark">Dark (Theme 1)</option>
+          <option value="light">Light (Theme 2)</option>
+          <option value="cyber">Cyber Neon (Theme 3)</option>
+          <option value="exuberant">Exuberant Neon (Theme 4)</option>
+          <option value="exuberant-light">Exuberant Light (Theme 5)</option>
+          <option value="zera">Zera Premium (Theme 6)</option>
+        </select>
+      </div>
+  </header>
+
+  <div class="devices">
+
+    <!-- MOBILE -->
+    <div class="device phone">
+      <div class="device-header">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <img src="assets/logo-symbol.svg" />
+        <span>📱</span>
+      </div>
+      <div class="device-body" id="phone"></div>
+    </div>
+
+    <!-- TABLET -->
+    <div class="device tablet">
+      <div class="device-header">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <img src="assets/logo-symbol.svg" />
+        <span>📱Tablet</span>
+      </div>
+      <div class="device-body" id="tablet"></div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
