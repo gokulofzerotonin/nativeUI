@@ -191,6 +191,93 @@
   color: #60A5FA;
 }
 
+/* --- THEME 7: CLINICAL (INSTITUTIONAL) --- */
+[data-theme="clinical"] {
+  --bg: #F9FBFD;
+  --card: #FFFFFF;
+  --border: #E3E8EF;
+  --accent: #0B62BA;
+  --brand: #0B62BA;
+  --text-primary: #1E2E3E;
+  --text-secondary: #5F6F86;
+  --text-muted: #94A3B8;
+  --success: #3FAF8F;
+  --warning: #E0B84F;
+  --danger: #D95C5C;
+  --demo-header-bg: rgba(255, 255, 255, 0.95);
+  --demo-header-border: #E3E8EF;
+  --bottom-nav-bg: #FFFFFF;
+  --radius-institutional: 10px;
+}
+
+[data-theme="clinical"] .card {
+  border-radius: var(--radius-institutional);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="clinical"] .btn-primary {
+  background: var(--brand);
+  border-radius: var(--radius-institutional);
+  box-shadow: none;
+  font-weight: 600;
+}
+
+[data-theme="clinical"] .btn-secondary {
+  background: transparent;
+  border: 1.5px solid var(--brand);
+  color: var(--brand);
+  border-radius: var(--radius-institutional);
+}
+
+[data-theme="clinical"] .header-app {
+  background: #FFFFFF;
+  border-bottom: 2px solid var(--border);
+}
+
+[data-theme="clinical"] .input {
+  border-radius: var(--radius-institutional);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+}
+
+/* SIDEBAR FOR CLINICAL (TABLET/DESKTOP) */
+.clinical-layout {
+  display: flex;
+  height: 100%;
+}
+
+.clinical-sidebar {
+  width: 240px;
+  background: #F1F5F9;
+  border-right: 1px solid #E3E8EF;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.sidebar-item {
+  padding: 12px 24px;
+  color: #5F6F86;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.sidebar-item.active {
+  background: #FFFFFF;
+  color: #0B62BA;
+  border-left: 4px solid #0B62BA;
+}
+
+[data-theme="clinical"] .bottom-nav {
+  background: #FFFFFF;
+  border-top: 2px solid var(--border);
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
@@ -269,6 +356,11 @@ body {
 
 .header-action:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* HIDE BOTTOM NAV IN CLINICAL SIDEBAR LAYOUT */
+.clinical-layout .bottom-nav {
+  display: none !important;
 }
 
 /* DEVICE WRAPPER */

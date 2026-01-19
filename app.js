@@ -64,6 +64,32 @@ const bottomNav = (active) => `
   </div>
 `;
 
+const clinicalSidebar = (active) => `
+  <div class="clinical-sidebar">
+    <div style="padding: 24px; margin-bottom: 20px;">
+        <img src="${currentLogo}" style="height: 32px;" />
+    </div>
+    <div class="sidebar-item ${active === 'home' ? 'active' : ''}" onclick="navigate('jobs')">
+      <span>🏠 Home</span>
+    </div>
+    <div class="sidebar-item ${active === 'apps' ? 'active' : ''}" onclick="navigate('applications_list')">
+      <span>📄 Applications</span>
+    </div>
+    <div class="sidebar-item ${active === 'notifs' ? 'active' : ''}" onclick="navigate('notifications')">
+      <span>🔔 Notifications</span>
+    </div>
+    <div class="sidebar-item ${active === 'profile' ? 'active' : ''}" onclick="navigate('profile_overview')">
+      <span>👤 Profile</span>
+    </div>
+    <div class="mt-auto" style="padding: 20px;">
+        <div class="card" style="margin: 0; padding: 12px; font-size: 12px;">
+            <strong>System Official</strong>
+            <p style="margin: 4px 0 0 0; font-size: 11px;">Ref: 2026-CLIN-PRO</p>
+        </div>
+    </div>
+  </div>
+`;
+
 function navigate(screen) {
   if (currentScreen !== screen) {
     historyStack.push(currentScreen);
@@ -955,7 +981,30 @@ function render() {
 
   const getScreenContent = (type) => {
     if (isLoading) return skeletonTemplate;
-    return screens[currentScreen] ? screens[currentScreen](type) : `<div>Screen not found: ${currentScreen}</div>`;
+    const activeMapping = {
+      'jobs': 'home',
+      'applications_list': 'apps',
+      'notifications': 'notifs',
+      'profile_overview': 'profile'
+    };
+    const activeTab = activeMapping[currentScreen] || '';
+
+    const content = screens[currentScreen] ? screens[currentScreen](type) : `<div>Screen not found: ${currentScreen}</div>`;
+    const currentTheme = document.body.getAttribute("data-theme");
+
+    if (currentTheme === "clinical" && (type === "tablet" || type === "standalone")) {
+      // Institutional Depth Layout: Sidebar + Content
+      return `
+            <div class="clinical-layout">
+                ${clinicalSidebar(activeTab)}
+                <div style="flex: 1; overflow-y: auto; height: 100vh;">
+                    ${content}
+                </div>
+            </div>
+        `;
+    }
+
+    return content;
   };
 
   const updateDevice = (device, type) => {
