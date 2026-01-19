@@ -13,7 +13,7 @@ window.setTheme = (theme) => {
   localStorage.setItem("zerotonin-theme", theme);
 
   // Map logos to themes
-  if (theme === 'light' || theme === 'exuberant-light') {
+  if (theme === 'light') {
     currentLogo = "assets/logo-symbol.svg";
     demoLogo = "assets/Logo-Text-Blue.svg";
   } else {
