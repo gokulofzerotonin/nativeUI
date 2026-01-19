@@ -1,6 +1,7 @@
 :root {
   --brand: #0B62BA;
   --bg: #071B2F;
+  --bg-main: radial-gradient(circle at 50% -20%, #142B4D, #071B2F);
   --card: #142B4D;
   --border: #1A3560;
   --accent: #1C7BE0;
@@ -23,6 +24,7 @@
 
 [data-theme="light"] {
   --bg: #F8FAFC;
+  --bg-main: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
   --card: #FFFFFF;
   --border: #E2E8F0;
   --accent: #0B62BA;
@@ -37,6 +39,7 @@
 
 [data-theme="cyber"] {
   --bg: #0F0118;
+  --bg-main: linear-gradient(215deg, #0F0118 0%, #1B022B 100%), radial-gradient(circle at 0% 0%, #FF00FF 0%, transparent 40%), radial-gradient(circle at 100% 100%, #00FFFF 0%, transparent 40%);
   --card: #1B022B;
   --border: #3D055A;
   --accent: #FF00FF;
@@ -55,6 +58,7 @@
 
 [data-theme="exuberant"] {
   --bg: #050008;
+  --bg-main: linear-gradient(135deg, #050008 0%, #0D0014 100%), radial-gradient(circle at top right, rgba(255, 0, 127, 0.15) 0%, transparent 60%), radial-gradient(circle at bottom left, rgba(57, 255, 20, 0.1) 0%, transparent 60%);
   --card: #0D0014;
   --border: #FF007F;
   /* Electric Pink */
@@ -94,6 +98,7 @@
 /* --- THEME 5: EXUBERANT LIGHT --- */
 [data-theme="exuberant-light"] {
   --bg: #FFFFFF;
+  --bg-main: linear-gradient(135deg, #FFFFFF 0%, #FDFDFD 100%), radial-gradient(circle at 90% 10%, rgba(255, 0, 127, 0.05) 0%, transparent 40%);
   --card: #FDFDFD;
   --border: #FF007F;
   /* Electric Pink */
@@ -142,6 +147,7 @@
 /* --- THEME 6: ZERA (PREMIUM NEUTRAL) --- */
 [data-theme="zera"] {
   --bg: #0A0F1D;
+  --bg-main: linear-gradient(180deg, #121A2E 0%, #0A0F1D 100%), radial-gradient(circle at 50% 0%, rgba(28, 123, 224, 0.15) 0%, transparent 70%);
   --card: #121A2E;
   --border: rgba(255, 255, 255, 0.08);
   --accent: #0B62BA;
@@ -194,6 +200,7 @@
 /* --- THEME 7: CLINICAL (INSTITUTIONAL) --- */
 [data-theme="clinical"] {
   --bg: #F9FBFD;
+  --bg-main: linear-gradient(180deg, #F9FBFD 0%, #F1F5F9 100%);
   --card: #FFFFFF;
   --border: #E3E8EF;
   --accent: #0B62BA;
@@ -241,6 +248,119 @@
   border: 1px solid var(--border);
 }
 
+/* --- THEME 8: TITANIUM (ULTRA-PROFESSIONAL) --- */
+[data-theme="titanium"] {
+  --bg: #020617;
+  --bg-main: radial-gradient(circle at 50% 0%, #0F172A 0%, #020617 100%);
+  --card: #0F172A;
+  --border: rgba(148, 163, 184, 0.1);
+  --accent: #38BDF8;
+  --brand: #0284C7;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --success: #10B981;
+  --radius-precision: 6px;
+  --shadow-titanium: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="titanium"] .card {
+  border-radius: var(--radius-precision);
+  background: #0F172A;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-titanium);
+}
+
+[data-theme="titanium"] .btn-primary {
+  background: var(--brand);
+  border-radius: var(--radius-precision);
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+[data-theme="titanium"] .btn-secondary {
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-primary);
+  border-radius: var(--radius-precision);
+}
+
+[data-theme="titanium"] .header-app {
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="titanium"] .input {
+  border-radius: var(--radius-precision);
+  background: #020617;
+  border: 1px solid var(--border);
+}
+
+/* PRECISION SIDEBAR (SLIM) */
+.precision-layout {
+  display: flex;
+  height: 100%;
+}
+
+.precision-sidebar {
+  width: 64px;
+  background: #020617;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 1001;
+}
+
+.precision-sidebar:hover {
+  width: 200px;
+}
+
+.precision-item {
+  width: 100%;
+  padding: 16px 20px;
+  color: #94A3B8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s;
+}
+
+.precision-item:hover {
+  background: rgba(56, 189, 248, 0.05);
+  color: #38BDF8;
+}
+
+.precision-item.active {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: inset 4px 0 0 #38BDF8;
+}
+
+.precision-sidebar .nav-label {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.precision-sidebar:hover .nav-label {
+  opacity: 1;
+}
+
+[data-theme="titanium"] .bottom-nav {
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+}
+
 /* SIDEBAR FOR CLINICAL (TABLET/DESKTOP) */
 .clinical-layout {
   display: flex;
@@ -286,7 +406,8 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--bg-main);
+  background-attachment: fixed;
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
@@ -358,8 +479,9 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* HIDE BOTTOM NAV IN CLINICAL SIDEBAR LAYOUT */
-.clinical-layout .bottom-nav {
+/* HIDE BOTTOM NAV IN SIDEBAR LAYOUTS */
+.clinical-layout .bottom-nav,
+.precision-layout .bottom-nav {
   display: none !important;
 }
 
@@ -403,7 +525,7 @@ body {
 
 /* APP UI */
 .device-body {
-  background: var(--bg);
+  background: var(--bg-main);
   border-radius: 28px;
   padding: 0;
   height: 667px;
@@ -432,7 +554,8 @@ body.standalone-mode {
   max-width: 500px;
   /* Centered column on desktop */
   height: 100vh;
-  background: var(--bg);
+  background: var(--bg-main);
+  background-attachment: fixed;
   position: relative;
   overflow-y: auto;
   scrollbar-width: none;

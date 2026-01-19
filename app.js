@@ -90,6 +90,36 @@ const clinicalSidebar = (active) => `
   </div>
 `;
 
+const precisionSidebar = (active) => `
+  <div class="precision-sidebar">
+    <div style="padding: 24px; margin-bottom: 32px;">
+        <img src="${currentLogo}" style="height: 24px;" />
+    </div>
+    <div class="precision-item ${active === 'home' ? 'active' : ''}" onclick="navigate('jobs')">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Dashboard</span>
+    </div>
+    <div class="precision-item ${active === 'apps' ? 'active' : ''}" onclick="navigate('applications_list')">
+      <span class="nav-icon">📄</span>
+      <span class="nav-label">Applications</span>
+    </div>
+    <div class="precision-item ${active === 'notifs' ? 'active' : ''}" onclick="navigate('notifications')">
+      <span class="nav-icon">🔔</span>
+      <span class="nav-label">Notifications</span>
+    </div>
+    <div class="precision-item ${active === 'profile' ? 'active' : ''}" onclick="navigate('profile_overview')">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label">Profile</span>
+    </div>
+    <div class="mt-auto" style="width: 100%; padding: 16px;">
+        <div class="precision-item" style="padding: 12px;" onclick="navigate('settings')">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-label">Preferences</span>
+        </div>
+    </div>
+  </div>
+`;
+
 function navigate(screen) {
   if (currentScreen !== screen) {
     historyStack.push(currentScreen);
@@ -992,9 +1022,9 @@ function render() {
     const content = screens[currentScreen] ? screens[currentScreen](type) : `<div>Screen not found: ${currentScreen}</div>`;
     const currentTheme = document.body.getAttribute("data-theme");
 
-    if (currentTheme === "clinical" && (type === "tablet" || type === "standalone")) {
-      // Institutional Depth Layout: Sidebar + Content
-      return `
+    if (type === "tablet" || type === "standalone") {
+      if (currentTheme === "clinical") {
+        return `
             <div class="clinical-layout">
                 ${clinicalSidebar(activeTab)}
                 <div style="flex: 1; overflow-y: auto; height: 100vh;">
@@ -1002,6 +1032,17 @@ function render() {
                 </div>
             </div>
         `;
+      }
+      if (currentTheme === "titanium") {
+        return `
+            <div class="precision-layout">
+                ${precisionSidebar(activeTab)}
+                <div style="flex: 1; overflow-y: auto; height: 100vh;">
+                    ${content}
+                </div>
+            </div>
+        `;
+      }
     }
 
     return content;
